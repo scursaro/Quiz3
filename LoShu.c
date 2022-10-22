@@ -80,12 +80,23 @@ void mix()
         int temp = numbers[i];
         numbers[i] = numbers[random];
         numbers[random] = temp;
-
-
     }
 }
 
 //Function that sets the array/grid
+void createBoard()
+{
+    mix();
+    int index =0;
+    for(int i =0; i<3; i++)
+    {
+        for(int j =0; j<3; j++)
+        {
+            board[i][j] = numbers[index];
+            index++;
+        }
+    }
+}
 
 //main method that checks if the grid works, and increments tries by one each time it needs to shuffle
 int main()
