@@ -13,6 +13,37 @@ int main()
     int guesses;
     int answer;
 
+
+    //generate random number between 1-100
+    srand(time(0));
+    answer = (rand() % MAX) + MIN;
+
+    //The guess game in general, before options 1 2 3. Just to have the game working
+    do{
+        printf("Enter a guess: ");
+        scanf("%d", &guess);
+        if(guess > answer)
+        {
+            printf("Too high!\n");
+
+        }
+        else if(guess < answer)
+        {
+            printf("Too Low!\n");
+        }
+        else
+        {
+            printf("Correct Answer!\n");
+        }
+        guesses++;
+    }while(guess != answer);
+
+
+    printf("/////////////////");
+    printf("Answer: %d\n", answer);
+    printf("Guesses: %d\n", guesses);
+    printf("/////////////////");
+
     //we will need to have an output that asks for options
     // 1: play the game
     //2: change max number
