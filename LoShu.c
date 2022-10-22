@@ -12,6 +12,7 @@ int board[3][3] =
 
 
 //We will have to make an array with the values
+int numbers[9] = {1,2,3,4,5,6,7,8,9};
 
 //There should be a function that checks if the array is Magic
 
