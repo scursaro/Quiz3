@@ -15,6 +15,17 @@ int board[3][3] =
 int numbers[9] = {1,2,3,4,5,6,7,8,9};
 
 //There should be a function that checks if the array is Magic
+int isBoardMagic(int arr[3][3])
+{
+    int magic = -1; //negative one so if not found it will be negative 1
+
+    //for loop to iterate through columns
+
+
+    //for loop to iterate through rows
+
+    //finally iterate through diagonals
+}
 
 //There should be a function that prints the array
 
