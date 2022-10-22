@@ -13,11 +13,15 @@ int main()
     int guesses;
     int answer;
 
+    int gameOption; //this is where we have the user select an option
+    do{
+    printf("Press 1 to Play a game\n Press 2 to change max number \n Pres 3 to quit\n");
+    scanf("%d", &gameOption);
 
+    if(gameOption ==1){
     //generate random number between 1-100
     srand(time(0));
     answer = (rand() % MAX) + MIN;
-
     //The guess game in general, before options 1 2 3. Just to have the game working
     do{
         printf("Enter a guess: ");
@@ -43,6 +47,9 @@ int main()
     printf("Answer: %d\n", answer);
     printf("Guesses: %d\n", guesses);
     printf("/////////////////");
+    }
+
+    }while(gameOption != 3);
 
     //we will need to have an output that asks for options
     // 1: play the game
