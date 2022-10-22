@@ -48,6 +48,27 @@ int isBoardMagic(int arr[3][3])
 }
 
 //There should be a function that prints the array
+void printBoard(int arr[3][3])
+{
+    printf("\n");
+
+    for(int i=0; i<3; i++)
+    {
+        for(int j =0; j<3; j++)
+        {
+            if(j==0)
+            {
+                printf("[ ");
+            }
+            printf("%d ", arr[i][j]);
+        }
+        printf("]\n");
+    }
+
+    printf("\n");
+
+
+}
 
 //Function that randomizes the board
 
