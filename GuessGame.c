@@ -57,13 +57,22 @@ int main()
 
     //once guess found, restarts the program
 
-    printf("/////////////////");
+    printf("/////////////////\n");
     printf("Answer: %d\n", answer);
     printf("Guesses: %d\n", guesses);
-    printf("/////////////////");
+    printf("/////////////////\n");
     }
 
+    if(gameOption ==2)
+    {
+        
+    }
+
+    
+
     }while(gameOption != 3);//Option 3, Thanks for playing ends program
+
+    printf("Thank you for playing.\n");
 
     
     //Option 2, not sure what this means tbh. maybe max is 100
