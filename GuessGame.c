@@ -4,9 +4,9 @@
 
 int main()
 {
-    //We will need to make constant ints for the min possible number and max.
+    //We will need to make constant ints for the min possible number. MAX not a const since we can change it
     const int MIN = 1;
-    const int MAX = 100;
+    int max = 100;
 
     // we will also need ints for the guess, and the answer. I want to add how may guesses
     int guess;
@@ -26,7 +26,7 @@ int main()
     if(gameOption ==1){ //Option 1 selected, runs through the game
     //generate random number between 1-100
     srand(time(0));
-    answer = (rand() % MAX) + MIN;
+    answer = (rand() % max) + MIN;
     //The guess game in general, before options 1 2 3. Just to have the game working
     do{
         printf("Enter a guess: ");
@@ -65,7 +65,19 @@ int main()
 
     if(gameOption ==2)
     {
+        printf("Pick a new max number, 1-100\n");
+        scanf("%d", &max);
+        if(max <1 || max > 100 )
+        {
+            printf("No Negative numbers or numbers greater than 100 please!\n Enter option 2 and try again\n");
+        }
+
         
+    }
+
+    else if(gameOption != 1 && gameOption != 2 && gameOption != 3)
+    {
+        printf("invalid input\n");
     }
 
     
