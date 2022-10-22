@@ -15,10 +15,15 @@ int main()
 
     int gameOption; //this is where we have the user select an option
     do{
+
+    //we will need to have an output that asks for options
+    // 1: play the game
+    //2: change max number
+    //3: to quit 
     printf("Press 1 to Play a game\n Press 2 to change max number \n Pres 3 to quit\n");
     scanf("%d", &gameOption);
 
-    if(gameOption ==1){
+    if(gameOption ==1){ //Option 1 selected, runs through the game
     //generate random number between 1-100
     srand(time(0));
     answer = (rand() % MAX) + MIN;
@@ -26,6 +31,7 @@ int main()
     do{
         printf("Enter a guess: ");
         scanf("%d", &guess);
+        
         if(guess > answer)
         {
             printf("Too high!\n");
@@ -35,6 +41,10 @@ int main()
         {
             printf("Too Low!\n");
         }
+        else if(guess > 100 && guess < 0) //checks if number is out of bounds
+        {
+            printf("Enter a number 1-100!!!!!!\n");
+        }
         else
         {
             printf("Correct Answer!\n");
@@ -42,6 +52,10 @@ int main()
         guesses++;
     }while(guess != answer);
 
+    //once guess is q, restart program, not end
+    
+
+    //once guess found, restarts the program
 
     printf("/////////////////");
     printf("Answer: %d\n", answer);
@@ -49,29 +63,11 @@ int main()
     printf("/////////////////");
     }
 
-    }while(gameOption != 3);
+    }while(gameOption != 3);//Option 3, Thanks for playing ends program
 
-    //we will need to have an output that asks for options
-    // 1: play the game
-    //2: change max number
-    //3: to quit 
-    // maybe a switch case nested in a while loop
-
-    //Option 1 selected, runs through the game
-
-    //once guess found, restarts the program
-
-    //once guess is q, restart program, not end
-
-
+    
     //Option 2, not sure what this means tbh. maybe max is 100
     //no negative numbers
-
-    //Option 3, Thanks for playing ends program
-
-
-
-
 
 
     return 0;
