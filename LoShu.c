@@ -3,6 +3,12 @@
 #include <time.h>
 
 //We will have to create a 2d grid 
+int board[3][3] =
+{
+    {0,0,0},
+    {0,0,0},
+    {0,0,0}
+}; 
 
 
 //We will have to make an array with the values
