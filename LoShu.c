@@ -71,6 +71,19 @@ void printBoard(int arr[3][3])
 }
 
 //Function that randomizes the board
+void mix()
+{
+    for(int i=8; i>0; i--)
+    {
+        int random = (rand() % (i+1));
+
+        int temp = numbers[i];
+        numbers[i] = numbers[random];
+        numbers[random] = temp;
+
+
+    }
+}
 
 //Function that sets the array/grid
 
