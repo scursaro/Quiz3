@@ -101,6 +101,42 @@ void createBoard()
 //main method that checks if the grid works, and increments tries by one each time it needs to shuffle
 int main()
 {
+    srand(time(0));
+
+    int loshuBoard[][3] = { //arbitrary numbers
+            {4,3,8},
+            {9,5,1},
+            {2,7,6}
+    };
+
+    int found =0;
+    int count =0;
+
+    while(!found)
+    {
+        createBoard(); //creates random board
+        count++;
+
+        if(count > 0)
+        {
+            printf("Attempt %d\n",count);
+        }
+        if(count > INT_MAX -1000)
+        {
+            for(int i=0; i < 3; i++)
+            {
+                for(int j =0; j <3;j++)
+                {
+                    board[i][j] = loshuBoard[i][j];
+                }
+            }
+        }
+
+        if(isBoardMagic(board) ==1) found =1;
+    }
+
+    printf("Found magic square! It took %d tries", count);
+    printBoard(board);
 
     return 0;
 }
