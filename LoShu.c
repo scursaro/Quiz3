@@ -3,107 +3,91 @@
 #include <time.h>
 
 //We will have to create a 2d grid 
-int board[3][3] =
-{
+int grid[3][3] = {
     {0,0,0},
     {0,0,0},
     {0,0,0}
-}; 
+};
 
 
 //We will have to make an array with the values
 int numbers[9] = {1,2,3,4,5,6,7,8,9};
 
 //There should be a function that checks if the array is Magic
-int isBoardMagic(int arr[3][3])
-{
-    int magic = -1; //negative one so if not found it will be negative 1
-
-    //for loop to iterate through columns
-    for(int i =0; i < 3; i++)
-    {
-        int oneSum = 0;
-        for(int j =0; j < 3; j++)
-        {
-            oneSum += arr[i][j];
+int isBoardMagic(int arr[3][3]) {
+    int magic = 1;
+    // iterate through columns
+    for(int i = 0; i < 3; i++) {
+        int isum = 0;
+        for (int j = 0; j < 3; j++) {
+            isum += arr[i][j];
         }
-        if(oneSum != 15) magic =0;
+        if(isum != 15) magic = 0;
     }
-    //for loop to iterate through rows
-    for(int j =0; j < 3; j++)
-    {
-        int twoSum = 0;
-        for(int i =0; i< 3; i++)
-        {
-            twoSum += arr[i][j];
+    // iterate through rows
+    for(int j = 0; j < 3; j++) {
+        int jsum = 0;
+        for (int i = 0; i < 3; i++) {
+            jsum += arr[i][j];
         }
-        if(twoSum != 15) magic =0;
+        if(jsum != 15) magic = 0;
     }
-
-    //finally iterate through diagonals
-    if(arr[0][0] + arr[1][1] + arr[2][2] != 15) magic =0;
-    if(arr[2][0] + arr[1][1] + arr[0][2] != 15) magic =0;
-
+    // iterate through diagonals
+    if(arr[0][0] + arr[1][1] + arr[2][2] != 15) magic = 0;
+    if(arr[2][0] + arr[1][1] + arr[0][2] != 15) magic = 0;
+    //return
     return magic;
 }
 
 //There should be a function that prints the array
 void printBoard(int arr[3][3])
 {
+    int i, j;
     printf("\n");
 
-    for(int i=0; i<3; i++)
-    {
-        for(int j =0; j<3; j++)
-        {
-            if(j==0)
-            {
-                printf("[ ");
-            }
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+            if(j == 0) printf("[ ");
             printf("%d ", arr[i][j]);
         }
         printf("]\n");
     }
-
     printf("\n");
-
-
 }
 
 //Function that randomizes the board
-void mix()
-{
-    for(int i=8; i>0; i--)
-    {
-        int random = (rand() % (i+1));
+void mix() {
 
-        int temp = numbers[i];
-        numbers[i] = numbers[random];
-        numbers[random] = temp;
+    for(int i = 8; i > 0; i--) {
+      int r = (rand() % (i + 1));
+      //swap
+      int temp = numbers[i];
+      numbers[i] = numbers[r];
+      numbers[r] = temp;
     }
 }
 
 //Function that sets the array/grid
-void createBoard()
-{
+void createBoard() {
+
     mix();
-    int index =0;
-    for(int i =0; i<3; i++)
-    {
-        for(int j =0; j<3; j++)
-        {
-            board[i][j] = numbers[index];
-            index++;
+    int n = 0;
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++) {
+            grid[i][j] = numbers[n];
+            n++;
         }
     }
+
 }
 
 //main method that checks if the grid works, and increments tries by one each time it needs to shuffle
-int main()
+int main(void)
 {
     srand(time(0));
 
-    int loshuBoard[][3] = { //arbitrary numbers
+    int loshuBoard[][3] =
+    { //arbitrary numbers
             {4,3,8},
             {9,5,1},
             {2,7,6}
@@ -118,25 +102,31 @@ int main()
         count++;
 
         if(count > 0)
-        {
             printf("Attempt %d\n",count);
-        }
-        if(count > INT_MAX -1000)
+        if(count > INT_MAX - 10000)
         {
             for(int i=0; i < 3; i++)
             {
                 for(int j =0; j <3;j++)
                 {
-                    board[i][j] = loshuBoard[i][j];
+                    grid[i][j] = loshuBoard[i][j];
                 }
             }
         }
 
-        if(isBoardMagic(board) ==1) found =1;
+        if(isBoardMagic(grid) ==1) 
+        {
+            found =1;
+        }
     }
-
     printf("Found magic square! It took %d tries", count);
-    printBoard(board);
+    printBoard(grid);
 
-    return 0;
+    /*createBoard();
+    if(isBoardMagic(loshuBoard))
+        {   
+    
+        }*/
+
+    //return 0;
 }
